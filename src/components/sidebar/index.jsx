@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Input, Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
+import PollForm from '../poll-form.jsx'
 import PollList from './poll-list'
 
 export default class Sidebar extends Component {
@@ -9,7 +10,7 @@ export default class Sidebar extends Component {
   }
 
   toggleModal = () => {
-    this.setState({openModal: !this.state.openModal})
+    this.setState({ openModal: !this.state.openModal })
   }
 
 
@@ -25,7 +26,7 @@ export default class Sidebar extends Component {
           />
           <Button
             color='success'
-            style={{marginLeft: '10px'}}
+            style={{ marginLeft: '10px' }}
             onClick={this.toggleModal}
           >
             New
@@ -37,7 +38,7 @@ export default class Sidebar extends Component {
           polls={this.props.polls}
           selectPoll={this.props.selectPoll}
         />
-        <Modal 
+        <Modal
           isOpen={this.state.openModal}
           toggle={this.toggleModal}
           unmountOnClose={true}
@@ -46,7 +47,9 @@ export default class Sidebar extends Component {
             Creae A New Poll
           </ModalHeader>
           <ModalBody>
-            This is modal body
+            <PollForm 
+              submit={this.props.addNewPoll}
+            />
           </ModalBody>
         </Modal>
       </div>
