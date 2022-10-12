@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'reactstrap'
 
 import Sidebar from './components/sidebar';
 import MainContent  from './components/main-content'
-import POLLS from './components/data/polls'
+import Polls from './components/data/polls'
 import shortid from 'shortid';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({polls: POLLS})
+    this.setState({polls: Polls})
   }
 
   addNewPoll = (poll) => {
@@ -46,7 +46,8 @@ class App extends Component {
   }
 
   selectPoll = (pollId) => {
-    const poll = this.state.polls.find(poll => poll.id !== pollId)
+    const poll = this.state.polls.find(poll => poll.id === pollId)
+    console.log(Object.keys(poll).length);
     this.setState({selectedPoll: poll})
   }
 
@@ -54,6 +55,22 @@ class App extends Component {
 
   }
   
+  getOpinion = (response) => {
+    const {polls} = this.state
+    const poll = polls.find(poll => poll.id === response.pollId)
+    const option = poll.options.find(option => option.id === response.selectedOption)
+
+    poll.totalVote++
+    option.vote++
+    const opinion = {
+      id: shortid.generate(),
+      name: response.name,
+      selectedOption: response.selectedOption
+    }
+
+    poll.opinions.push(opinion)
+    this.setState({polls})
+  }
 
   render() {
     return (
@@ -68,8 +85,13 @@ class App extends Component {
               addNewPoll={this.addNewPoll}
             />
           </Col>
-          <Col md={4}>
-            <MainContent />
+          <Col md={8}>
+            <MainContent 
+              poll={this.state.selectedPoll}
+              getOpinion={this.getOpinion}
+              updatePoll={this.updatePoll}
+              deletePoll={this.deletePoll}
+            />
           </Col>
         </Row>
       </Container>

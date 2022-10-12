@@ -1,6 +1,6 @@
 import shortid from 'shortid'
 
-const polls = [
+const Polls = [
     {
         id: shortid.generate(),
         title: 'What is Your Favourite Programming Language',
@@ -9,7 +9,7 @@ const polls = [
             {id: shortid.generate(), value: 'C Programming', vote: 0},
             {id: shortid.generate(), value: 'Java', vote: 0},
             {id: shortid.generate(), value: 'Javascript', vote: 0},
-            {id: shortid.generate(), value: 'Python', vote: 0}
+            {id: shortid.generate(), value: 'Python', vote: 0},
         ],
         created: new Date(),
         totalVote: 0,
@@ -22,7 +22,7 @@ const polls = [
         options: [
             {id: shortid.generate(), value: 'Angular', vote: 0},
             {id: shortid.generate(), value: 'React', vote: 0},
-            {id: shortid.generate(), value: 'Vue', vote: 0}
+            {id: shortid.generate(), value: 'Vue', vote: 0},
         ],
         created: new Date(),
         totalVote: 0,
@@ -35,7 +35,7 @@ const polls = [
         options: [
             {id: shortid.generate(), value: 'React Natieve', vote: 0},
             {id: shortid.generate(), value: 'Cotlin', vote: 0},
-            {id: shortid.generate(), value: 'Java', vote: 0}
+            {id: shortid.generate(), value: 'Java', vote: 0},
         ],
         created: new Date(),
         totalVote: 0,
@@ -43,4 +43,4 @@ const polls = [
     }
 ]
 
-export default polls;
+export default Polls;

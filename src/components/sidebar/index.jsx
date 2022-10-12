@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Input, Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
-import PollForm from '../poll-form.jsx'
+import PollForm from '../poll-form'
 import PollList from './poll-list'
 
 export default class Sidebar extends Component {
