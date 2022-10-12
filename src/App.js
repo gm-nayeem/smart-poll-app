@@ -31,7 +31,7 @@ class App extends Component {
 
   updatePoll = (updatedPoll) => {
     const {polls} = this.state
-    const poll = polls.filter(poll => poll.id === updatedPoll.id)
+    const poll = polls.find(poll => poll.id === updatedPoll.id)
 
     poll.title = updatedPoll.title
     poll.description = updatedPoll.description
@@ -42,17 +42,24 @@ class App extends Component {
 
   deletePoll = (pollId) => {
     const polls = this.state.polls.filter(poll => poll.id !== pollId)
-    this.setState({polls})
+    this.setState({polls, selectedPoll: {}})
   }
 
   selectPoll = (pollId) => {
     const poll = this.state.polls.find(poll => poll.id === pollId)
-    console.log(Object.keys(poll).length);
     this.setState({selectedPoll: poll})
   }
 
   handleSearch = (searchValue) => {
+    this.setState({
+      searchTerm: searchValue
+    })
+  }
 
+  performSearch = () => {
+    return this.state.polls.filter(poll => {
+      return poll.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
   }
   
   getOpinion = (response) => {
@@ -62,6 +69,7 @@ class App extends Component {
 
     poll.totalVote++
     option.vote++
+    
     const opinion = {
       id: shortid.generate(),
       name: response.name,
@@ -73,12 +81,16 @@ class App extends Component {
   }
 
   render() {
+
+    const polls = this.performSearch()
+    console.log(this.state)
+
     return (
       <Container className='my-5'>
         <Row>
           <Col md={4}>
             <Sidebar 
-              polls={this.state.polls} 
+              polls={polls} 
               selectPoll={this.selectPoll}
               searchTerm={this.state.searchTerm}
               handleSearch={this.handleSearch}
