@@ -69,6 +69,7 @@ export default class ParticipationForm extends Component {
                     </Button>
                     <Button
                         type='button'
+                        color='danger'
                         //className='ml-2'
                         style={{marginLeft: '10px'}}
                         onClick={() => this.props.deletePoll(this.props.poll.id)}

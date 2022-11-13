@@ -49,6 +49,7 @@ export default class Sidebar extends Component {
           <ModalBody>
             <PollForm 
               submit={this.props.addNewPoll}
+              toggle={this.toggleModal}
             />
           </ModalBody>
         </Modal>

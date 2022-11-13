@@ -54,6 +54,7 @@ export default class MainContent extends Component {
               poll={poll}
               isUpdate={true}
               submit={updatePoll}
+              toggle={this.toggleModal}
               buttonValue='Update Poll'
             />
           </ModalBody>

@@ -77,9 +77,11 @@ export default class PollForm extends Component {
             if (this.props.isUpdate) {
                 poll.id = this.props.poll.id
                 this.props.submit(poll)
+                this.props.toggle()
                 alert('Updated Successfully')
             } else {
                 this.props.submit(poll)
+                this.props.toggle()                              
                 e.target.reset()
                 this.setState({
                     title: '',
@@ -87,6 +89,7 @@ export default class PollForm extends Component {
                     options: defaultOptions,
                     errors: {}
                 })
+                alert('Created Successfully')  
             }
 
         } else {

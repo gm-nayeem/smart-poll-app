@@ -30,7 +30,7 @@ const Polls = [
     },
     {
         id: shortid.generate(),
-        title: 'Whai is the Best way to Create Android App',
+        title: 'What is the Best way to Create Android App',
         description: 'I want to create an android app, but I have no idea and not any proper guidelines. So, how you create an android app and do you prefer any suggest for us',
         options: [
             {id: shortid.generate(), value: 'React Natieve', vote: 0},
